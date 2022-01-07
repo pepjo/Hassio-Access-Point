@@ -227,7 +227,7 @@ fi
 logger "## Starting hostapd daemon" 1
 # If debug level is greater than 1, start hostapd in debug mode
 if [ $DEBUG -gt 1 ]; then
-    killall -q hostapd; logger hostapd -dd /hostapd.conf & wait ${!}
+    killall -q hostapd; hostapd -dd /hostapd.conf | logger & wait ${!}
 else
     killall -q hostapd; hostapd /hostapd.conf & wait ${!}
 fi
